@@ -38,9 +38,9 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Dump secrets context
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-        run: echo "$SECRETS_CONTEXT"
+      env:
+        SECRETS_CONTEXT: ${{ toJson(secrets) }}
+      run: echo "$SECRETS_CONTEXT"
       # run: npm ci
       # env:
       #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
