@@ -29,7 +29,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: | 
         npm ci
-        echo ${{ NODE_AUTH_TOKEN }}
+        echo ${{ env.NODE_AUTH_TOKEN }}
     # cache: 'npm'
     # - run: npm ci
     # - run: npm run build --if-present
