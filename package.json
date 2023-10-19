@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/mtm-yinyinaye/github-actions-nodejs/issues"
   },
-  "homepage": "https://github.com/mtm-yinyinaye/github-actions-nodejs#readme"
+  "homepage": "https://github.com/mtm-yinyinaye/github-actions-nodejs#readme",
+  "dependencies": {
+    "@mtm-yinyinaye/hello-package-demo": "^1.0.0"
+  }
 }

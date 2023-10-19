@@ -2,25 +2,54 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Node.js CI
+run-name: Testing With Node.js
 
 on:
   push:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+  # workflow_dispatch:
+  #   inputs:
+  #     branch:
+  #       description: デプロイ対象のブランチ
+  #       required: true
+  #       default: develop
+
+# permissions:
+#   packages: read
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
+    permissions:
+      actions: read|write
+      contents: read
+      packages: read|write
+      pull-requests: read|write
+      repository-projects: read|write
+      
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Check Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: 16.x
+          registry-url: https://npm.pkg.github.com
+          # registry-url: https://registry.npmjs.org
+          scope: '@mtm-yinyinaye'
+      - name: Dump secrets context
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+        run: echo "$SECRETS_CONTEXT"
+      - name: Install dependencies
+        run:  | 
+          npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+
