@@ -30,7 +30,7 @@ jobs:
           always-auth: true
           node-version: 16.x
           registry-url: https://registry.npmjs.org
-          scope: '@mtm-yinyinaye'
+          # scope: '@mtm-yinyinaye'
       - name: Dump secrets context
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
