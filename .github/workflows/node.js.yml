@@ -27,17 +27,26 @@ jobs:
     - name: Setup Node.js 16
       uses: actions/setup-node@v3
       with:
-        always-auth: false
+        always-auth: true
         node-version: 16.x
         registry-url: https://registry.npmjs.org
         scope: '@mtm-yinyinaye'
     - name: Install dependencies
-      # run: npm ci
+    - name: Install dependencies
+      run:  | 
+        npm ci
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: | 
-        npm ci
-        echo ${{ env.NODE_AUTH_TOKEN }}
+    - name: Dump secrets context
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+        run: echo "$SECRETS_CONTEXT"
+      # run: npm ci
+      # env:
+      #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # run: | 
+      #   npm ci
+      #   echo ${{ env.NODE_AUTH_TOKEN }}
     # cache: 'npm'
     # - run: npm ci
     # - run: npm run build --if-present
