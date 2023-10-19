@@ -40,14 +40,5 @@ jobs:
     - name: Dump secrets context
       env:
         SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      run: echo "$SECRETS_CONTEXT"
-      # run: npm ci
-      # env:
-      #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # run: | 
-      #   npm ci
-      #   echo ${{ env.NODE_AUTH_TOKEN }}
-    # cache: 'npm'
-    # - run: npm ci
-    # - run: npm run build --if-present
-    # - run: npm test
+      uses: echo "$SECRETS_CONTEXT"
+
