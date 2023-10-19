@@ -21,8 +21,10 @@ jobs:
     - name: Setup Node.js 16
       uses: actions/setup-node@v3
       with:
+        always-auth: true
         node-version: 16.x
         registry-url: https://registry.npmjs.org
+        scope: '@mtm-yinyinaye'
     - name: Install dependencies
       # run: npm ci
       env:
