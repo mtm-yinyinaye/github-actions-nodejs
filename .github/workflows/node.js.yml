@@ -17,7 +17,7 @@ on:
   #       default: develop
 
 permissions:
-  packages: none
+  packages: read
 
 jobs:
   build:
