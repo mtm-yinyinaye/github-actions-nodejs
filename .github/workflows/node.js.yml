@@ -16,6 +16,9 @@ on:
   #       required: true
   #       default: develop
 
+permissions:
+  packages: none
+
 jobs:
   build:
 
