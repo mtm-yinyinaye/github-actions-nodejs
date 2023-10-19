@@ -16,14 +16,18 @@ on:
   #       required: true
   #       default: develop
 
-permissions:
-  packages: read
+# permissions:
+#   packages: read
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
+    permissions:
+      contents: read
+      packages: read/write
+      
     steps:
       - name: Check Repository
         uses: actions/checkout@v3
