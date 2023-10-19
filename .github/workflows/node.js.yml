@@ -9,6 +9,12 @@ on:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: デプロイ対象のブランチ
+        required: true
+        default: develop
 
 jobs:
   build:
