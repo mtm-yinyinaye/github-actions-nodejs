@@ -25,11 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      actions: read/write
+      actions: read|write
       contents: read
-      packages: read/write
-      pull-requests: read/write
-      repository-projects: read/write
+      packages: read|write
+      pull-requests: read|write
+      repository-projects: read|write
       
     steps:
       - name: Check Repository
